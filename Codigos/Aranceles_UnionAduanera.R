@@ -24,7 +24,7 @@ WITS_wide <- WITS_proc %>%
   pivot_wider(names_from = REP, values_from = c(S_AVG, IMP_VAL)) %>%
   replace_na(list(S_AVG_Mexico = 0, S_AVG_Canada = 0, `S_AVG_United States` = 0, 
                   IMP_VAL_Mexico = 0, IMP_VAL_Canada = 0,
-                  `IMP_VAL_United States` = 0)) %>% #pongo cero a NAS, hace que no los pondere esos
+                  `IMP_VAL_United States` = 0)) %>% #pongo cero a NAS, hace que no los pondere esos, es por diferencia en HS Classifications
   mutate(IMP_VAL = IMP_VAL_Mexico + IMP_VAL_Canada + `IMP_VAL_United States`) %>% 
   select(-IMP_VAL_Mexico, -IMP_VAL_Canada, -`IMP_VAL_United States`) %>%
   mutate(ind_MX_EU = ifelse(S_AVG_Mexico == `S_AVG_United States`, 1, 0),
